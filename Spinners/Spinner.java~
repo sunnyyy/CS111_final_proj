@@ -1,0 +1,64 @@
+import java.awt.*;
+
+class Spinner extends Sprite 
+{
+  // flesh out this class
+  
+  private int centerX;
+  private int centerY;
+  private int vertRadius;
+  private int horzRadius;
+  private int changeRadius;
+  private Color c1;
+  private Color c2;
+  private boolean isColor2;
+  private int staticX;
+  
+  public Spinner(int x, int y, int radius, int dRadius, Color color1, Color color2)
+  {
+    centerX = x;
+    centerY = y;
+    staticX = x;
+    vertRadius = radius;
+    horzRadius = radius;
+    changeRadius = dRadius;
+    c1 = color1;
+    c2 = color2;
+    isColor2 = false;
+  }
+  
+  public void resetState() {
+    isColor2 = false;
+    horzRadius = vertRadius;
+  }
+  
+  public void updateState() {
+    horzRadius = horzRadius - changeRadius;
+    centerX = centerX + changeRadius;
+    if (horzRadius <= 0) {
+      changeRadius = -changeRadius;
+      isColor2 = true;
+    }
+    if (horzRadius >= vertRadius) {
+      changeRadius = -changeRadius;
+      isColor2 = false;
+    }
+  }
+  
+  public void drawState(Graphics g) {
+    g.setColor(Color.black);  
+    g.drawLine(staticX, 0, staticX, centerY - vertRadius);
+    if(!isColor2) {
+      g.setColor(c1);
+    } else {
+      g.setColor(c2);
+    }
+    g.fillOval(centerX - vertRadius, centerY - vertRadius, 2*horzRadius, 2*vertRadius);
+    
+    
+  }
+  
+  // Declare any auxiliary methods here:
+  
+}
+

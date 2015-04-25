@@ -1,0 +1,59 @@
+import java.awt.*; // use graphics
+
+public class Rafiki extends Sprite {
+  private int rafikiHeight;
+  private int rafikiWidth;
+  private int x;
+  private int y;
+  private int delay;
+  private int frameCounter;
+//  private int[] armsX;
+//  private int[] armsY;
+  
+  public Rafiki (int tempDelay) {
+    x = 3*width/4;
+    y = 2*width/3;
+    rafikiHeight = height/10;
+    rafikiWidth = width/10;
+    delay = tempDelay;
+    frameCounter = 0;
+    
+//    armsX = new int[4];
+//    armsX[0] = ;
+//    armsX[1] = ;
+//    armsX[2] = ;
+//    armsX[3] = ;
+//    
+//    armsY = new int[0];
+//    armsY[0] = ;
+//    armsY[1] = ;
+//    armsY[2] = ;
+//    armsY[3] = ;
+  }
+  
+  public void drawState (Graphics g) {
+    g.setColor(Color.gray);
+    g.fillOval(x - rafikiWidth/2, y - rafikiHeight/2, rafikiWidth, rafikiHeight); //Rafiki body
+    g.fillOval(x - rafikiWidth/2, y - rafikiHeight, rafikiWidth, rafikiHeight/2); //Rafiki head
+    g.setColor(new Color(255, 200, 0));
+    if(frameCounter < delay) {
+      g.fillOval(x - 3*rafikiWidth/2, y - rafikiHeight/2, rafikiWidth, rafikiWidth); //simba
+      g.setColor(Color.gray);
+      g.fillOval(x - rafikiWidth, y - rafikiHeight/2, rafikiHeight, rafikiHeight/5); //Rafiki arms
+    } else {
+      g.fillOval(x - rafikiWidth/2, y - rafikiHeight, rafikiWidth, rafikiWidth); //simba
+      g.setColor(Color.gray);
+      g.fillOval(x - rafikiWidth/2, y - rafikiHeight, rafikiHeight, rafikiHeight/5); // arms
+    }
+  }
+  
+  public void updateState() {
+    frameCounter += 1;
+  }
+  
+  public void resetState() {
+    frameCounter = 0;
+  }
+  
+  
+}

@@ -1,0 +1,36 @@
+import java.awt.*; // use graphics
+
+public class Sky extends Sprite {
+  
+  //instance variables
+  private Color c1;
+  private int green;
+  private int delay;
+  private int frameCounter;
+  
+  public Sky (int tempDelay) {
+    green = 0;
+    c1 = new Color(255, green, 0);
+    delay = tempDelay;
+    frameCounter = 0;
+  }
+  
+  public void drawState(Graphics g) {
+    g.setColor(c1);
+    g.fillRect(0, 0, width, height);
+  }
+  
+  public void updateState() {
+    frameCounter = frameCounter + 1;
+    if (frameCounter % delay == 0 && green <= 175) {
+      green = green + 25;
+    }
+    c1 = new Color(255, green, 0);
+  }
+  
+  public void resetState() {
+    green = 0;
+    frameCounter = 0;
+  }
+  
+}

@@ -1,0 +1,66 @@
+import java.awt.*; // use graphics
+
+public class Clouds extends Sprite {
+  
+  private int centerX;
+  private int centerY;
+  private int bigHeight;
+  private int bigWidth;
+  //private int 25;
+  //private int 50;
+  private Color c1;
+  private int green;
+  private int delay;
+  private int frameCounter;
+  private int height;
+  private int width;
+  
+  // constructor
+  public Clouds(int tempCenterX, int tempCenterY, int tempDelay, int tempHeight, int tempWidth) {
+    centerY = tempCenterY;
+    centerX = tempCenterX;
+    delay = tempDelay;
+    frameCounter = 0;
+    height = tempHeight;
+    width = tempWidth;
+    bigHeight = 2*height/3;
+    bigWidth = 2*width/3;
+    green = 50;
+    c1 = new Color(255, green, 100);
+  }
+  
+  public void drawState(Graphics g) {
+    g.setColor(c1);
+    
+    // small oval #1
+    g.fillOval(centerX - 50, centerY - 3*25/2, 50, 25);
+    // small oval #2
+    g.fillOval(centerX, centerY - 3*25/2, 50, 25);
+    // small oval #3
+    g.fillOval(centerX - 3*50/2, centerY - 25/2, 50, 25);
+    
+    // big center oval (#4)
+    g.fillOval(centerX - bigWidth/2, centerY - bigWidth/2, bigWidth, bigHeight);
+    
+    // small oval #5
+    g.fillOval(centerX + 3*50/2, centerY - 25/2, 50, 25);
+    // small oval #6
+    g.fillOval(centerX - 50, centerY + 25/2, 50, 25);
+    // small oval #7
+    g.fillOval(centerX, centerY + 25/2, 50, 25);
+  }
+ 
+  public void updateState() {
+    frameCounter = frameCounter + 1;
+    if (frameCounter % delay == 0 && green <= 225) {
+      green = green + 25;
+    }
+    c1 = new Color(255, green, 0);
+  }
+  
+  public void resetState() {
+    green = 50;
+    frameCounter = 0;
+  }
+  
+}

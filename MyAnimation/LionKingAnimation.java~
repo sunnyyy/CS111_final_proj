@@ -1,0 +1,23 @@
+import java.awt.*; // 
+
+// You should change the name of this class to better reflect the nature of your project. 
+class LionKingAnimation extends Animation { 
+    
+    private Color c1;
+
+    public LionKingAnimation(){
+        this.c1 = Color.blue;
+        
+      // Add your sprits and animation controls here. 
+      //addSprite(background, "background");
+      //addSprite(new Sky(10), "sky");
+        addSprite(new PrideRock(), "Pride Rock");
+        addSprite(new Sun(2), "sun");
+        //addSprite(new Clouds(75, 150, 10, 20, 30), "clouds");
+      
+      this.setNumberFrames(Animation.NO_MAX_FRAMES);
+      // Study other animations and the AnimationWorld contract
+      //    for the kind of things that you can do 
+    }
+
+}
