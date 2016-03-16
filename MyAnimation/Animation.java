@@ -234,9 +234,9 @@ public class Animation {
   }
   
   private void checkForCues () {
-    if (cuesClone.size()>0) {
+    if (cuesClone.getSize()>0) {
       int i=0;
-      while (i<cuesClone.size()) {
+      while (i<cuesClone.getSize()) {
         if (((Cue)cuesClone.elementAt(i)).execute(frameNumber)) {
           cuesClone.removeElementAt(i);
         } else {

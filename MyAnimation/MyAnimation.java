@@ -7,7 +7,7 @@ class MyAnimation extends Animation {
 
     public MyAnimation(){
         this.c1 = Color.blue;
-        
+        /*
       // Add your sprits and animation controls here. 
       //addSprite(background, "background");
       addSprite(new TreeLinerSprite(0,1,0.5,60,0.7,0.5,1,Color.green));
@@ -30,6 +30,7 @@ class MyAnimation extends Animation {
       this.setNumberFrames(Animation.NO_MAX_FRAMES);
       // Study other animations and the AnimationWorld contract
       //    for the kind of things that you can do 
+      */
     }
 
 }
